@@ -1,0 +1,34 @@
+/* SPDX-License-Identifier: MIT */
+#include "sakusplit44.dtsi"
+
+/* Если физически правый блок «сдвинут»,
+ * можно задать col-offset у трансформа:
+ * &default_transform { col-offset = <7>; }; // пример
+ */
+
+&{ /* пустой корень нужен для корректного include */ };
+
+&left_encoder  { status = "disabled"; };
+&right_encoder { status = "okay"; };
+
+&kscan0 {
+    compatible = "zmk,kscan-gpio-matrix";
+    label = "KSCAN_RIGHT";
+    diode-direction = "col2row";
+
+    /* Твои 7 столбцов правой половины */
+    col-gpios =
+        <&pro_micro_a 3 GPIO_ACTIVE_HIGH>,
+        <&pro_micro_a 2 GPIO_ACTIVE_HIGH>,
+        <&pro_micro_a 1 GPIO_ACTIVE_HIGH>,
+        <&pro_micro_a 0 GPIO_ACTIVE_HIGH>,
+        <&pro_micro_d 15 GPIO_ACTIVE_HIGH>,
+        <&pro_micro_d 14 GPIO_ACTIVE_HIGH>,
+        <&pro_micro_d 16 GPIO_ACTIVE_HIGH>;
+
+    /* Твои 3 строки правой половины */
+    row-gpios =
+        <&pro_micro_d 1  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&pro_micro_d 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&pro_micro_d 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+};
