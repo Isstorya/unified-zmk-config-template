@@ -1,11 +1,6 @@
-#include <dt-bindings/zmk/matrix-transform.h>
+#include <dt-bindings/zmk/matrix_transform.h>
 
  / {
-     chosen {
-         zmk,kscan = &kscan0;
-         zmk,matrix_transform = &default_transform;
-     };
-
      default_transform: keymap_transform0 {
          compatible = "zmk,matrix-transform";
          rows = <4>;
@@ -20,16 +15,16 @@
 
      left_encoder: encoder_left {
          compatible = "alps,ec11";
-         a-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-         b-gpios = <&gpio0 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+         a-gpios = <&pro_micro_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+         b-gpios = <&pro_micro_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
          steps = <80>;
          status = "disabled";
      };
 
      right_encoder: encoder_right {
          compatible = "alps,ec11";
-         a-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-         b-gpios = <&gpio0 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+         a-gpios = <&pro_micro_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+         b-gpios = <&pro_micro_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
          steps = <80>;
          status = "disabled";
      };

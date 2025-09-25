@@ -3,6 +3,11 @@
 &default_transform { col-offset = <6>; };
 
  / {
+     chosen {
+         zmk,kscan = &kscan0;
+         zmk,matrix_transform = &default_transform;
+     };
+
      kscan0: kscan {
          compatible = "zmk,kscan-gpio-matrix";
          label = "KSCAN_RIGHT";
