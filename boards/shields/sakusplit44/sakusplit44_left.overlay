@@ -1,29 +1,28 @@
-/* SPDX-License-Identifier: MIT */
 #include "sakusplit44.dtsi"
 
-/ {
-    kscan0: kscan {
-        compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN_LEFT";
-        diode-direction = "col2row"; /* проверь по своей схеме */
-        /* Пример: семь столбцов (замени на свои пины!) */
-        col-gpios =
-            <&pro_micro_a 3 GPIO_ACTIVE_HIGH>,
-            <&pro_micro_a 2 GPIO_ACTIVE_HIGH>,
-            <&pro_micro_a 1 GPIO_ACTIVE_HIGH>,
-            <&pro_micro_a 0 GPIO_ACTIVE_HIGH>,
-            <&pro_micro_d 15 GPIO_ACTIVE_HIGH>,
-            <&pro_micro_d 14 GPIO_ACTIVE_HIGH>,
-            <&pro_micro_d 16 GPIO_ACTIVE_HIGH>;
-        /* Три строки (подтяги вниз, если нужно) */
-        row-gpios =
-            <&pro_micro_d 1  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-            <&pro_micro_d 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-            <&pro_micro_d 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-        debounce-press-ms = <5>;
-        debounce-release-ms = <5>;
-    };
-};
+ / {
+     kscan0: kscan {
+         compatible = "zmk,kscan-gpio-matrix";
+         label = "KSCAN_LEFT";
+         diode-direction = "col2row";
 
-/* Включаем левый энкодер */
+         col-gpios =
+             <&pro_micro_a 3 GPIO_ACTIVE_HIGH>,
+             <&pro_micro_a 2 GPIO_ACTIVE_HIGH>,
+             <&pro_micro_a 1 GPIO_ACTIVE_HIGH>,
+             <&pro_micro_a 0 GPIO_ACTIVE_HIGH>,
+             <&pro_micro_d 15 GPIO_ACTIVE_HIGH>,
+             <&pro_micro_d 14 GPIO_ACTIVE_HIGH>;
+
+         row-gpios =
+             <&pro_micro_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+             <&pro_micro_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+             <&pro_micro_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+             <&pro_micro_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+
+         debounce-press-ms = <5>;
+         debounce-release-ms = <5>;
+     };
+ };
+
 &left_encoder { status = "okay"; };

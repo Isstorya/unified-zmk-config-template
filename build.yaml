@@ -19,6 +19,6 @@
 #
 include:
   - board: nice_nano_v2
-    shield: ergo21_left
+    shield: sakusplit44_left
   - board: nice_nano_v2
-    shield: ergo21_right
+    shield: sakusplit44_right

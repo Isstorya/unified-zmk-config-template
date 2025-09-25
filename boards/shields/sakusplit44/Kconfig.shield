@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: MIT
 config SHIELD_SAKUSPLIT44_LEFT
   def_bool $(shields_list_contains,sakusplit44_left)
 
