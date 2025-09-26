@@ -1,35 +1,22 @@
 #include "sakusplit44.dtsi"
 
-&default_transform { col-offset = <6>; };
+&kscan0 {
+    compatible = "zmk,kscan-gpio-matrix";
 
- / {
-     chosen {
-         zmk,kscan = &kscan0;
-         zmk,matrix_transform = &default_transform;
-     };
+    col-gpios =
+        <&gpio0 31 GPIO_ACTIVE_HIGH>, /* D21 */
+        <&gpio0 29 GPIO_ACTIVE_HIGH>, /* D20 */
+        <&gpio0  2 GPIO_ACTIVE_HIGH>, /* D19 */
+        <&gpio1 15 GPIO_ACTIVE_HIGH>, /* D18 */
+        <&gpio1 13 GPIO_ACTIVE_HIGH>, /* D15 */
+        <&gpio1 11 GPIO_ACTIVE_HIGH>; /* D14 */
 
-     kscan0: kscan {
-         compatible = "zmk,kscan-gpio-matrix";
-         label = "KSCAN_RIGHT";
-         diode-direction = "col2row";
+    row-gpios =
+        <&gpio0  6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* D1 */
+        <&gpio0  8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* D0 */
+        <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* D2 */
+        <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* D3 */
 
-         col-gpios =
-             <&gpio0 31 GPIO_ACTIVE_HIGH>, /* A3  = D21 */
-             <&gpio0 29 GPIO_ACTIVE_HIGH>, /* A2  = D20 */
-             <&gpio0  2 GPIO_ACTIVE_HIGH>, /* A1  = D19 */
-             <&gpio1 15 GPIO_ACTIVE_HIGH>, /* A0  = D18 */
-             <&gpio1 13 GPIO_ACTIVE_HIGH>, /* D15 */
-             <&gpio1 11 GPIO_ACTIVE_HIGH>; /* D14 */
-
-         row-gpios =
-             <&gpio0  6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* D1 */
-             <&gpio0  8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* D0 */
-             <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* D2 */
-             <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* D3 */
-
-         debounce-press-ms = <5>;
-         debounce-release-ms = <5>;
-     };
- };
+};
 
 &right_encoder { status = "okay"; };
